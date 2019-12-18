@@ -12,8 +12,8 @@ Here we are assuming that we have to create multiple line items with same config
 # Solution
 1. Now we have to create the first line item in the sequence
 2. Open the developer toolbar of the Chrome browser
-3. Fill up the three step form of line item creation, enter priority, budget, **enter the Rate as 0.05**, daypart targeting, frequency caps, select ad-units, setup geo targetings, connectivity, device and OS targetings, user targetings, keyword targetings.
-4. Now before clicking the Save button, clear the Network pannel of developer toolbar.
+3. Fill up the three step form of line item creation, enter priority, budget, **enter the Rate as 0.05**, daypart targeting, frequency caps, select ad-units, setup geo-targeting, connectivity, device and OS targetings, user targetings, keyword targetings.
+4. Now before clicking the Save button, clear the Network panel in the developer toolbar.
 5. Now click the Save button.
 6. If your action was successful then you will see many calls executing in the network panel.
 7. Find the call in network panel "https://app.mopub.com/web-client/api/line-items/create"
