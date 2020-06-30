@@ -4,15 +4,15 @@
 2. Create a new application
 3. Create new ad-units associated to the new application
 4. Create new order
-5. Now under this new order we have to create multiple line items, say 100 line items each with Rate of increments of $0.05. First with rate $0.05 , second with rate $0.10, third with $0.15 and so on.
+5. Now under this new order we have to create multiple line items, 170 in total if Prebid's auto granularity is used, with increments of $0.05. First with rate $0.05 , second with rate $0.10, third with $0.15 and so on.
 
 # Assumption
-Here we are assuming that we have to create multiple line items with same configuration and only chnage is the Rate value
+Here we are assuming that we have to create multiple line items with same configuration and only change is the Rate value
 
 # Solution
 1. Now we have to create the first line item in the sequence
 2. Open the developer toolbar of the Chrome browser
-3. Fill up the three step form of line item creation, enter priority, budget, **enter the Rate as 0.05**, daypart targeting, frequency caps, select ad-units, setup geo-targeting, connectivity, device and OS targetings, user targetings, keyword targetings.
+3. Fill up the three step form of line item creation, enter priority, budget, **enter the Rate as 0.05**, daypart targeting, frequency caps, select ad-units, setup geo-targeting, connectivity, device and OS targetings, user targetings, keyword targetings. Please see https://community.pubmatic.com/display/IMOB/MoPub+ad+server+setup for a step-by-step guide.
 4. Now before clicking the Save button, clear the Network panel in the developer toolbar.
 5. Now click the Save button.
 6. If your action was successful then you will see many calls executing in the network panel.
@@ -26,17 +26,12 @@ curl 'https://app.mopub.com/web-client/api/line-items/create' -H 'origin: https:
 ```
 
 # Python script
-So here is a simple python script that will read the given **line-item-creation-call.txt** file and executes it multiple times till it has created line items of given Max Rate (mentioned in python code).
-You will need to update following variables as needed and then execute python script
+This simple Python script will read the given **line-item-creation-call.txt** file. The default setting is to use Prebid's auto price granularity, which is the only granularity level supported by OpenWrap SDK / MoPub integrations.
+
+You will need to update following variables as needed and then execute Python script:
+
 ```
 linItemNamePrefix = "Line Item Name " # here you need to put line item name prefix, line items will be generated as "Line Item Name ( 0.05 )" for bid value 0.05
-firstLineItemBidRate = 0.05 # here you have to mention the bid rate of the last line-item created on UI
-bidBucketOf = 0.05 # here you need to mention the bucket value in increment of which you want next line item to be created
-maxBidRate = 0.20 # here you need to mention the max value of bid rate of which you want to create a line item; if you mention 5.00 then line item of bid rate 5.00 will be created
 fileName = "line-item-creation-call.txt" # name or path of the text file in which you have copied the Curl call of the line item which we need to refer; make sure it is created recently to have a valid csrf token
-
 ````
-
-# Video Tutorial
-Here is a quick video demo https://www.hippovideo.io/video/play/L0Pfe1UQM6RrpMhkDrw4V3G798fjEP5wj7NZ5Qhj9Es
 
