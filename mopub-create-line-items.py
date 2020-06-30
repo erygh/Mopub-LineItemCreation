@@ -56,7 +56,7 @@ def create_line_items(postDataJson, linItemNamePrefix, firstLineItemBidRate, max
 		else:
 			print("Line item created successfuly.")
 
-# OpenBid SDK only supports Prebid's Auto Granularity at this time with MoPub.
+# OpenWrap SDK only supports Prebid's Auto Granularity at this time with MoPub.
 # Documentation for this is available at prebid.org
 # There are four separate CPM levels set within auto-granularity:
 # CPM of <= $5 at $0.05 increments
@@ -72,7 +72,7 @@ def set_prebid_autogranularity():
 	create_line_items(postDataJson, linItemNamePrefix, 20, 20, 0)
 
 # uncomment the line below to set auto-granularity. This is the only setting
-# supported by OpenBid SDK.
+# supported by OpenWrap SDK.
 set_prebid_autogranularity()
 
 # run manually by uncommenting the code below
